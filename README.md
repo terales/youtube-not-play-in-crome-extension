@@ -1,5 +1,7 @@
 ## [Demo] YouTube embedded video inside Chrome extension page appears as back rectangle in Chrome 56. How can we fix it?
 
+Issue in Chrome tracker: https://bugs.chromium.org/p/chromium/issues/detail?id=698545
+
 ### How to reproduce:
 
 1. Load unpacked extension in chrome://extensions/
@@ -11,6 +13,25 @@
 
 #### But there is no problems if we look at request with WebRequest API:
 ![request-completes](https://cloud.githubusercontent.com/assets/1920639/23737663/25d8f6e4-049d-11e7-91f0-7bca6135cb67.PNG)
+
+#### Found issue root in net-internal logs:
+
+```
+error_204
+Unknown error
+Error: Failed to construct 'IntersectionObserver': Unable to get root node in main frame to track.
+    at new AZ (https://www.youtube.com/yts/jsbin/player-en_US-vflg9Wu9U/base.js:3691:122)
+    at new V1 (https://www.youtube.com/yts/jsbin/player-en_US-vflg9Wu9U/base.js:3972:112)
+    at V1.create (https://www.youtube.com/yts/jsbin/player-en_US-vflg9Wu9U/base.js:6964:333)
+    at Bh.<anonymous> (https://www.youtube.com/yts/jsbin/www-embed-player-vflzkmSYc/www-embed-player.js:431:269)
+    at Bh.k.mb (https://www.youtube.com/yts/jsbin/www-embed-player-vflzkmSYc/www-embed-player.js:431:308)
+    at Fh (https://www.youtube.com/yts/jsbin/www-embed-player-vflzkmSYc/www-embed-player.js:429:143)
+    at Bh.k.qa (https://www.youtube.com/yts/jsbin/www-embed-player-vflzkmSYc/www-embed-player.js:422:176)
+    at https://www.youtube.com/yts/jsbin/www-embed-player-vflzkmSYc/www-embed-player.js:464:420
+    at https://www.youtube.com/yts/jsbin/www-embed-player-vflzkmSYc/www-embed-player.js:69:63
+line=Not available
+level=ERROR
+```
 
 Code for embedding:
 ```html

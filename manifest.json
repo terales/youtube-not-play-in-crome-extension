@@ -1,0 +1,14 @@
+{
+  "name": "Youtube won't play embeded videos in crome-extension [Demo]",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Demo for encountered problem with cancelled request",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "webRequest",
+    "<all_urls>"
+  ],
+  "content_security_policy": "default-src 'self' https://s.ytimg.com; frame-src https://www.youtube.com;"
+}

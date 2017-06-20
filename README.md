@@ -2,6 +2,9 @@
 
 Issue in Chrome tracker: https://bugs.chromium.org/p/chromium/issues/detail?id=698545
 
+## This is a [research code](https://meiert.com/en/blog/20140716/research-and-production/).
+
+
 ### How to reproduce:
 
 1. Load unpacked extension in chrome://extensions/
